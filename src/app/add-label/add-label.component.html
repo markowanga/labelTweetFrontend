@@ -1,0 +1,29 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div *ngIf="username===''" style="text-align:center; alignment: center;left: 50%;top: 50%;">
+  <div style="text-align:center; alignment: center;left: 50%;top: 50%;">
+    <h1>
+      Welcome to tweetLabel 😆
+    </h1>
+  </div>
+  <input type="text" [formControl]="nameControl"><br>
+  <button (click)="setUsername()">Set username</button>
+</div>
+<div *ngIf="username!==''" style="text-align:center; alignment: center;left: 50%;top: 50%;">
+  <h1>
+    {{username}}, let's label tweets 😆
+  </h1>
+  <div style="max-width: 400px; display: inline-block; white-space: pre-line;
+  overflow-wrap: break-word; word-wrap: break-word; hyphens: auto;">
+    Tweet id: {{tweetId}}<br><br>
+    {{tweet}}
+  </div>
+  <br>
+  <br>
+  <input type="text" [formControl]="noteControl" placeholder="Note"><br>
+  <button (click)="sendLabel('NOT_SUPPORT')">Not support</button>
+  <button (click)="sendLabel('CANT_DEFINE')">Can't define</button>
+  <button (click)="sendLabel('NEUTRAL')">Neutral</button>
+  <button (click)="sendLabel('SUPPORT')">Support</button>
+  <br>
+  Labelled tweets: {{labelledTweetCount}}
+</div>
