@@ -1,0 +1,48 @@
+pipeline {
+    agent {
+        docker {
+            image 'node:alpine'
+            args '-u root'
+        }
+    }
+    stages {
+        stage('checkout sources') {
+            steps {
+                git branch: 'master', credentialsId: 'markowanga_github',
+                        url: 'https://github.com/markowanga/tweet_label_frontend.git'
+                sh 'rm ci/Jenkinsfile'
+                sh 'rm -rf ci/dist'
+            }
+        }
+        stage('build & test') {
+            steps {
+                sh 'npm install'
+                sh 'npm run build -- --prod'
+            }
+        }
+        stage('deploy') {
+            steps {
+                sh "mv dist ci/dist"
+                sh "ls -l ci"
+                sshPublisher(
+                        continueOnError: false,
+                        failOnError: true,
+                        publishers: [
+                                sshPublisherDesc(
+                                        configName: 'DS_SERVER',
+                                        verbose: true,
+                                        transfers: [
+                                                sshTransfer(
+                                                        sourceFiles: "ci/**/*",
+                                                        removePrefix: "ci/",
+                                                        remoteDirectory: 'projects/tweet_label/front',
+                                                        execCommand: "bash projects/tweet_label/front/deploy.sh"
+                                                )
+                                        ]
+                                )
+                        ]
+                )
+            }
+        }
+    }
+}

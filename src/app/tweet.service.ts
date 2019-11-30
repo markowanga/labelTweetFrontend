@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {environment} from '../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 interface ITweet {
   id: string;
@@ -14,7 +15,7 @@ interface IStat {
 }
 
 interface ITweetDetails {
-  id: string;
+  tweet_id: string;
   tweet: string;
   hashtags: string;
   label: string;
@@ -24,7 +25,7 @@ interface ITweetDetails {
 }
 
 interface LabelledTweets {
-  data: ITweetDetails[];
+  tweets: ITweetDetails[];
 }
 
 @Injectable({
@@ -50,6 +51,6 @@ export class TweetService {
   }
 
   getLabelledData(): Observable<LabelledTweets> {
-    return this.http.get<LabelledTweets>(this.baseUrl + '/stats');
+    return this.http.get<LabelledTweets>(this.baseUrl + '/labelled_tweets').pipe(tap(it => console.log(it.tweets)));
   }
 }

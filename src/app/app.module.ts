@@ -12,6 +12,7 @@ import {
   MatSortModule, MatTableModule
 } from '@angular/material';
 import { AddLabelComponent } from './add-label/add-label.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AddLabelComponent } from './add-label/add-label.component';
     MatProgressSpinnerModule,
     MatSortModule,
     MatTableModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
