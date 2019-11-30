@@ -9,7 +9,7 @@ pipeline {
         stage('checkout sources') {
             steps {
                 git branch: 'master', credentialsId: 'markowanga_github',
-                        url: 'https://github.com/markowanga/tweet_label_frontend.git'
+                        url: 'https://github.com/markowanga/labelTweetFrontend.git'
                 sh 'rm ci/Jenkinsfile'
                 sh 'rm -rf ci/dist'
             }
