@@ -3,6 +3,7 @@ mat-cell, .mat-cell {
 }
 .mat-table__wrapper .mat-table {
   min-width: auto !important;
+  max-width: 100% !important;
   width: 100% !important;
 }
 

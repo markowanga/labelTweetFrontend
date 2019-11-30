@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TweetService} from '../tweet.service';
 import {environment} from '../../environments/environment';
+import {saveAs} from 'file-saver';
 
 @Component({
   selector: 'app-labeled-tweet',
@@ -22,6 +23,11 @@ export class LabeledTweetComponent implements OnInit {
       console.log(this.dataSource.length);
       console.log(this.dataSource[0]);
     });
+    // this.downloadResults();
+  }
+
+  downloadResults() {
+    saveAs(environment.apiUrl + '/get_result_file', 'result.json');
   }
 
 }
