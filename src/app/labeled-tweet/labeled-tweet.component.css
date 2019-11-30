@@ -1,7 +1,15 @@
-table {
+mat-cell, .mat-cell {
+  padding: 12px 16px 12px 0;
+}
+.mat-table__wrapper .mat-table {
+  min-width: auto !important;
+  width: 100% !important;
+}
+
+.mat-header-row {
   width: 100%;
 }
 
-mat-cell, .mat-cell {
-  padding: 12px 16px 12px 0;
+.mat-row {
+  width: 100%;
 }
