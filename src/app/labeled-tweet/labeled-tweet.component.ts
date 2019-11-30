@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TweetService} from '../tweet.service';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-labeled-tweet',
@@ -10,6 +11,7 @@ export class LabeledTweetComponent implements OnInit {
 
   displayedColumns: string[] = ['tweet_id', 'hashtags', 'tweet', 'label', 'username', 'update_time', 'note'];
   dataSource = [];
+  imageBaseUrl = environment.apiUrl;
 
   constructor(private tweetService: TweetService) {
   }
