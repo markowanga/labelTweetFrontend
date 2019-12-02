@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ITweetDetails, LabelledTweets, TweetService} from '../tweet.service';
+import {ITweetDetails, TweetService} from '../tweet.service';
 import {environment} from '../../environments/environment';
 import {saveAs} from 'file-saver';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
