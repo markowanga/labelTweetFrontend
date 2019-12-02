@@ -29,7 +29,7 @@ export class LabeledTweetComponent implements OnInit {
   }
 
   downloadResults() {
-    saveAs(environment.apiUrl + '/get_result_file', 'result.json');
+    saveAs(environment.apiUrl + '/get_all_results', 'result.json');
   }
 
 }

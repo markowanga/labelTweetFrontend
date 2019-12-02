@@ -1,6 +1,6 @@
 <div style="text-align:center; alignment: center;left: 50%;top: 50%;">
   <img src="{{imageBaseUrl}}/stats_heatmap" alt="Heatmap of labelling distribution"><br>
-  <button mat-button> Download full labelling results JSON file</button>
+  <button mat-button (click)="downloadResults()"> Download full labelling results JSON file</button>
 </div>
 
 <table mat-table [dataSource]="dataSource">
