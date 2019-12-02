@@ -1,5 +1,8 @@
-<img src="{{imageBaseUrl}}/stats_heatmap">
-<div class="mat-elevation-z8">
+<div style="text-align:center; alignment: center;left: 50%;top: 50%;">
+  <img src="{{imageBaseUrl}}/stats_heatmap" alt="Heatmap of labelling distribution"><br>
+  <button mat-button> Download full labelling results JSON file</button>
+</div>
+<!--<div class="mat-elevation-z8">-->
 
   <table mat-table [dataSource]="dataSource">
 
@@ -48,4 +51,4 @@
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20, 100]" showFirstLastButtons></mat-paginator>
 
-</div>
+<!--</div>-->
