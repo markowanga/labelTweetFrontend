@@ -5,8 +5,10 @@
       Welcome to tweetLabel 😆
     </h1>
   </div>
-  <input type="text" [formControl]="nameControl"><br>
-  <button (click)="setUsername()">Set username</button>
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" placeholder="Username" [formControl]="nameControl"><br>
+  </mat-form-field>
+  <button mat-button style="margin-left: 12px" (click)="setUsername()">GO</button>
 </div>
 <div *ngIf="username!==''" style="text-align:center; alignment: center;left: 50%;top: 50%;">
   <h1>
@@ -19,11 +21,13 @@
   </div>
   <br>
   <br>
-  <input type="text" [formControl]="noteControl" placeholder="Note"><br>
-  <button (click)="sendLabel('NOT_SUPPORT')">Not support</button>
-  <button (click)="sendLabel('CANT_DEFINE')">Can't define</button>
-  <button (click)="sendLabel('NEUTRAL')">Neutral</button>
-  <button (click)="sendLabel('SUPPORT')">Support</button>
-  <br>
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" [formControl]="noteControl" placeholder="Note">
+  </mat-form-field><br>
+  <button mat-button (click)="sendLabel('NOT_SUPPORT')">Not support</button>
+  <button mat-button (click)="sendLabel('CANT_DEFINE')">Can't define</button>
+  <button mat-button (click)="sendLabel('NEUTRAL')">Neutral</button>
+  <button mat-button (click)="sendLabel('SUPPORT')">Support</button>
+  <br><br>
   Labelled tweets: {{labelledTweetCount}}
 </div>
