@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {TweetService} from '../tweet.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ITweetDetails, LabelledTweets, TweetService} from '../tweet.service';
 import {environment} from '../../environments/environment';
 import {saveAs} from 'file-saver';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-labeled-tweet',
@@ -11,19 +12,20 @@ import {saveAs} from 'file-saver';
 export class LabeledTweetComponent implements OnInit {
 
   displayedColumns: string[] = ['tweet_id', 'hashtags', 'tweet', 'label', 'username', 'update_time', 'note'];
-  dataSource = [];
+  dataSource = new MatTableDataSource<ITweetDetails>([]);
   imageBaseUrl = environment.apiUrl;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
 
   constructor(private tweetService: TweetService) {
   }
 
   ngOnInit() {
+
     this.tweetService.getLabelledData().subscribe(tweetData => {
-      this.dataSource = tweetData.tweets;
-      console.log(this.dataSource.length);
-      console.log(this.dataSource[0]);
+      this.dataSource = new MatTableDataSource<ITweetDetails>(tweetData.tweets);
+      this.dataSource.paginator = this.paginator;
     });
-    // this.downloadResults();
   }
 
   downloadResults() {

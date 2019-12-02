@@ -13,4 +13,7 @@ mat-cell, .mat-cell {
 
 .mat-row {
   width: 100%;
+  height: 100px !important;
 }
+
+span.nobr { white-space: nowrap; }

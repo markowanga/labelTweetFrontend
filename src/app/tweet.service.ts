@@ -14,17 +14,17 @@ interface IStat {
   labelled_tweets_count: number;
 }
 
-interface ITweetDetails {
+export interface ITweetDetails {
   tweet_id: string;
   tweet: string;
   hashtags: string;
   label: string;
   note: string;
-  update_time: string;
+  update_time: Date;
   username: string;
 }
 
-interface LabelledTweets {
+export interface LabelledTweets {
   tweets: ITweetDetails[];
 }
 
