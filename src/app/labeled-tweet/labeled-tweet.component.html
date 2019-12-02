@@ -6,25 +6,21 @@
 
   <table mat-table [dataSource]="dataSource">
 
-    <!-- Position Column -->
     <ng-container matColumnDef="tweet_id">
       <th mat-header-cell *matHeaderCellDef> Tweet ID</th>
       <td mat-cell *matCellDef="let element"> {{element.tweet_id}} </td>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="hashtags">
       <th mat-header-cell *matHeaderCellDef> Hashtags</th>
       <td mat-cell *matCellDef="let element"> {{element.hashtags}} </td>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="tweet">
       <th mat-header-cell *matHeaderCellDef> Tweet content</th>
       <td mat-cell *matCellDef="let element">{{element.tweet}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
     <ng-container matColumnDef="label">
       <th mat-header-cell *matHeaderCellDef> Label</th>
       <td mat-cell *matCellDef="let element"> {{element.label}} </td>
