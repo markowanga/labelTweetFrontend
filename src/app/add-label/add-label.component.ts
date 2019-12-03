@@ -20,12 +20,10 @@ export class AddLabelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getTweet();
-    this.getStats();
   }
 
   getTweet(): void {
-    this.tweetService.getTweet().subscribe(
+    this.tweetService.getTweet(this.username).subscribe(
       tweet => {
         this.tweet = tweet.tweet;
         this.tweetId = tweet.id;
@@ -44,7 +42,7 @@ export class AddLabelComponent implements OnInit {
   }
 
   getStats() {
-    this.tweetService.getLabelingStats().subscribe(
+    this.tweetService.getLabelingStats(this.username).subscribe(
       stats => {
         this.labelledTweetCount = stats.labelled_tweets_count;
       }
@@ -53,6 +51,10 @@ export class AddLabelComponent implements OnInit {
 
   setUsername() {
     this.username = this.nameControl.value;
+
+    // post actions
+    this.getTweet();
+    this.getStats();
   }
 
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
@@ -38,16 +38,16 @@ export class TweetService {
   constructor(private http: HttpClient) {
   }
 
-  getTweet(): Observable<ITweet> {
-    return this.http.get<ITweet>(this.baseUrl + '/get_unlabelled_tweet');
+  getTweet(username): Observable<ITweet> {
+    return this.http.get<ITweet>(this.baseUrl + '/get_unlabelled_tweet?username=' + username);
   }
 
   sendLabel(tweetId, label, username, note): Observable<any> {
     return this.http.put(this.baseUrl + '/save_label', {tweet_id: tweetId, label, username, note});
   }
 
-  getLabelingStats(): Observable<IStat> {
-    return this.http.get<IStat>(this.baseUrl + '/stats');
+  getLabelingStats(username): Observable<IStat> {
+    return this.http.get<IStat>(this.baseUrl + '/stats?username=' + username);
   }
 
   getLabelledData(): Observable<LabelledTweets> {
