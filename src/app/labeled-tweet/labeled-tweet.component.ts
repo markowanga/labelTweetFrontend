@@ -32,4 +32,8 @@ export class LabeledTweetComponent implements OnInit {
     saveAs(environment.apiUrl + '/get_all_results', 'result.json');
   }
 
+  downloadReportOfUserLabelSameTweet() {
+    saveAs(environment.apiUrl + '/tweet_labels_file', 'user_labels.txt');
+  }
+
 }
