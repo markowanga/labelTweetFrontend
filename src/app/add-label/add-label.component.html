@@ -8,7 +8,10 @@
   <mat-form-field class="example-full-width">
     <input matInput type="text" placeholder="Username" [formControl]="nameControl"><br>
   </mat-form-field>
-  <button mat-button style="margin-left: 12px" (click)="setUsername()">GO</button>
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" placeholder="Labelling tag" [formControl]="labellingTagControl"><br>
+  </mat-form-field>
+  <button mat-button style="margin-left: 12px" (click)="setUsernameAndTag()">GO</button>
 </div>
 <div *ngIf="username!==''" style="text-align:center; alignment: center;left: 50%;top: 50%;">
   <h1>
@@ -23,11 +26,13 @@
   <br>
   <mat-form-field class="example-full-width">
     <input matInput type="text" [formControl]="noteControl" placeholder="Note">
-  </mat-form-field><br>
+  </mat-form-field>
+  <br>
   <button mat-button (click)="sendLabel('NOT_SUPPORT')">Not support</button>
   <button mat-button (click)="sendLabel('CANT_DEFINE')">Can't define</button>
   <button mat-button (click)="sendLabel('NEUTRAL')">Neutral</button>
-  <button mat-button (click)="sendLabel('SUPPORT')">Support</button>
+  <button mat-button (click)="sendLabel('SUPPORT')">Support</button><br>
+  <button mat-button (click)="sendTweetToExperts()">To experts</button>
   <br><br>
-  Labelled tweets: {{labelledTweetCount}}
+  Labelled tweets: {{labelledTweetCount}} / {{allTweetsToLabel}}
 </div>

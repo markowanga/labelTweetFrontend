@@ -38,16 +38,23 @@ export class TweetService {
   constructor(private http: HttpClient) {
   }
 
-  getTweet(username): Observable<ITweet> {
-    return this.http.get<ITweet>(this.baseUrl + '/get_unlabelled_tweet?username=' + username);
+  getUnlabelledTweet(username, labellingTag): Observable<ITweet> {
+    return this.http.get<ITweet>(this.baseUrl + '/get_unlabelled_tweet?username=' + username +
+      '&labelling_tag=' + labellingTag);
   }
 
-  sendLabel(tweetId, label, username, note): Observable<any> {
-    return this.http.put(this.baseUrl + '/save_label', {tweet_id: tweetId, label, username, note});
+  sendLabel(tweetId, label, username, note, labellingTag): Observable<any> {
+    return this.http.put(this.baseUrl + '/save_label',
+      {tweet_id: tweetId, label, username, note, labelling_tag: labellingTag});
   }
 
-  getLabelingStats(username): Observable<IStat> {
-    return this.http.get<IStat>(this.baseUrl + '/stats?username=' + username);
+  getLabelingStats(username, labellingTag): Observable<IStat> {
+    return this.http.get<IStat>(this.baseUrl + '/stats?username=' + username + '&labelling_tag=' + labellingTag);
+  }
+
+  sendTweetToExperts(username, labellingTag, tweetId): Observable<any> {
+    return this.http.put(this.baseUrl + '/send_to_experts',
+      {username, labelling_tag: labellingTag, tweet_id: tweetId});
   }
 
   getLabelledData(): Observable<LabelledTweets> {
